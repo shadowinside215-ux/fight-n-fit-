@@ -21,7 +21,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ settingKey, label 
     const uploadPreset = (import.meta as any).env.VITE_CLOUDINARY_UPLOAD_PRESET;
 
     if (!cloudName || !uploadPreset) {
-      alert('Cloudinary not configured. Please add VITE_CLOUDINARY_CLOUD_NAME and VITE_CLOUDINARY_UPLOAD_PRESET to your environment.');
+      console.error('Cloudinary not configured. Please add VITE_CLOUDINARY_CLOUD_NAME and VITE_CLOUDINARY_UPLOAD_PRESET to your environment.');
       return;
     }
 
@@ -59,15 +59,15 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ settingKey, label 
   };
 
   return (
-    <div className="absolute top-2 right-2 z-40">
+    <div className="absolute inset-0 z-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 backdrop-blur-[2px]">
       <Button 
         size="sm" 
         onClick={handleUpload} 
         disabled={uploading}
-        className="bg-primary text-black hover:bg-primary/80 h-8 px-3 rounded-full shadow-lg"
+        className="bg-primary text-black hover:bg-primary/80 h-7 px-2 rounded-full shadow-lg scale-90"
       >
-        {uploading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4 mr-2" />}
-        <span className="text-[10px] font-bold uppercase">{label}</span>
+        {uploading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-3.5 h-3.5 mr-1.5" />}
+        <span className="text-[9px] font-bold uppercase">{label}</span>
       </Button>
     </div>
   );

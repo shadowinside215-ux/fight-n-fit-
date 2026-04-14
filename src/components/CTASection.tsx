@@ -26,6 +26,7 @@ const CTASection = () => {
               {t('cta.title')}
             </h2>
             <Button 
+              nativeButton={false}
               render={<a href="https://wa.me/212661530857" target="_blank" rel="noopener noreferrer" />}
               size="lg" 
               className="bg-black text-white hover:bg-black/90 font-extrabold text-xl h-20 px-12 rounded-[4px] uppercase tracking-tight group"

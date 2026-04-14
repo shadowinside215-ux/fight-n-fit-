@@ -15,7 +15,7 @@ const Hero = () => {
   return (
     <section id="home" className="relative h-screen w-full overflow-hidden flex items-center">
       {/* Background Image/Video Placeholder */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 group">
         <img
           src={heroImage}
           alt="Martial Arts Training"
@@ -49,6 +49,7 @@ const Hero = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
+                nativeButton={false}
                 render={<a href="https://wa.me/212661530857" target="_blank" rel="noopener noreferrer" />}
                 size="lg" 
                 className="bg-primary text-black font-extrabold text-sm h-14 px-8 uppercase tracking-tight hover:bg-primary/90 rounded-[4px]"

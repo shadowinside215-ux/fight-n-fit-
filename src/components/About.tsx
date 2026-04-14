@@ -40,7 +40,7 @@ const About = () => {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="aspect-square rounded-2xl overflow-hidden border-2 border-primary/20 relative">
+            <div className="aspect-square rounded-2xl overflow-hidden border-2 border-primary/20 relative group">
               <img
                 src={aboutImage}
                 alt="Gym Interior"

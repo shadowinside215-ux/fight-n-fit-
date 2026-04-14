@@ -34,6 +34,7 @@ const Navbar = () => {
     { name: t('nav.home'), href: '#home' },
     { name: t('nav.about'), href: '#about' },
     { name: t('nav.programs'), href: '#programs' },
+    { name: 'Offers', href: '#offers' },
     { name: t('nav.schedule'), href: '#schedule' },
     { name: t('nav.contact'), href: '#contact' },
   ];
@@ -49,10 +50,8 @@ const Navbar = () => {
       <div className="container mx-auto px-10 flex justify-between items-center">
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 bg-white/5 border border-border rounded-sm flex items-center justify-center overflow-hidden relative group">
-            {settings.logoUrl ? (
+            {settings.logoUrl && (
               <img src={settings.logoUrl} alt="Logo" className="w-full h-full object-contain" referrerPolicy="no-referrer" />
-            ) : (
-              <span className="text-[10px] text-muted-foreground uppercase font-bold text-center leading-tight">Logo<br/>Space</span>
             )}
             <ImageUploader settingKey="logoUrl" label="Logo" />
           </div>
@@ -86,6 +85,7 @@ const Navbar = () => {
             </DropdownMenu>
             
             <Button 
+              nativeButton={false}
               render={<a href={whatsappLink} target="_blank" rel="noopener noreferrer" />}
               className="bg-primary text-black font-extrabold uppercase tracking-tight hover:bg-primary/90 rounded-[4px] px-6 text-xs h-10"
             >

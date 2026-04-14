@@ -52,7 +52,7 @@ const Programs = () => {
           <div className="h-1.5 w-24 bg-primary mx-auto" />
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {programs.map((program, i) => (
             <motion.div
               key={program.id}
@@ -60,30 +60,32 @@ const Programs = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
+              className="group"
             >
-              <Card className="bg-card border border-border p-5 rounded-[8px] h-full flex flex-col justify-between relative overflow-hidden group">
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none">
+              <Card className="bg-card border border-border rounded-[8px] h-full flex flex-col overflow-hidden relative">
+                <div className="h-48 w-full overflow-hidden relative">
                   <img 
-                    src={(settings as any)[program.imageKey]} 
-                    alt="" 
-                    className="w-full h-full object-cover"
+                    src={(settings as any)[program.imageKey] || "https://images.unsplash.com/photo-1552072092-7f9b8d63efcb?q=80&w=2070&auto=format&fit=crop"} 
+                    alt={program.name} 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     referrerPolicy="no-referrer"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60" />
+                  <ImageUploader settingKey={program.imageKey} label="Change Image" />
                 </div>
-                <div className="relative z-10">
-                  <h3 className="text-primary text-[18px] font-bold mb-2 uppercase">
-                    {program.name}
-                  </h3>
-                  <p className="text-[12px] text-muted-foreground leading-relaxed">
+                <CardContent className="p-6 flex flex-col flex-grow">
+                  <div className="flex justify-between items-start mb-3">
+                    <h3 className="text-primary text-xl font-black uppercase tracking-tighter">
+                      {program.name}
+                    </h3>
+                    <Badge variant="secondary" className="bg-primary/10 text-primary border-none text-[10px] font-bold uppercase">
+                      {program.level}
+                    </Badge>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {program.desc}
                   </p>
-                </div>
-                <div className="mt-4 relative z-10 flex justify-between items-center">
-                  <span className="text-[10px] bg-primary/15 text-primary px-2 py-1 rounded-[4px] font-bold uppercase">
-                    {program.level}
-                  </span>
-                  <ImageUploader settingKey={program.imageKey} label="Image" />
-                </div>
+                </CardContent>
               </Card>
             </motion.div>
           ))}
