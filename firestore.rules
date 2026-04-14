@@ -1,0 +1,60 @@
+// ===============================================================
+// Assumed Data Model
+// ===============================================================
+//
+// Collection: settings
+// Document ID: global
+// Fields:
+//   - logoUrl: string (optional) - URL of the gym logo
+//   - heroImageUrl: string (optional) - URL of the hero background image
+//   - aboutImageUrl: string (optional) - URL of the about section image
+//   - boxingImageUrl: string (optional) - URL for Boxing program
+//   - kickboxingImageUrl: string (optional) - URL for Kickboxing program
+//   - mmaImageUrl: string (optional) - URL for MMA program
+//   - fitnessImageUrl: string (optional) - URL for Fitness program
+//
+// Collection: users
+// Document ID: {uid}
+// Fields:
+//   - email: string (required)
+//   - role: string (required) - 'admin' or 'user'
+//
+// ===============================================================
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() &&
+        (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+         (request.auth.token.email == "dragonballsam86@gmail.com" && request.auth.token.email_verified == true));
+    }
+
+    function isValidSettings(data) {
+      return data.keys().hasOnly(['logoUrl', 'heroImageUrl', 'aboutImageUrl', 'boxingImageUrl', 'kickboxingImageUrl', 'mmaImageUrl', 'fitnessImageUrl']);
+    }
+
+    // ===============================================================
+    // Rules
+    // ===============================================================
+
+    match /settings/global {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /users/{userId} {
+      allow read: if isAuthenticated() && (request.auth.uid == userId || isAdmin());
+      allow write: if isAdmin();
+    }
+  }
+}

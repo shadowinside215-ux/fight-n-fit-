@@ -1,0 +1,29 @@
+{
+  "entities": {
+    "siteSettings": {
+      "title": "Site Settings",
+      "description": "Global settings and images for the website",
+      "type": "object",
+      "properties": {
+        "logoUrl": { "type": "string", "description": "URL of the gym logo" },
+        "heroImageUrl": { "type": "string", "description": "URL of the hero background image" },
+        "aboutImageUrl": { "type": "string", "description": "URL of the about section image" },
+        "programs": {
+          "type": "object",
+          "properties": {
+            "boxing": { "type": "string" },
+            "kickboxing": { "type": "string" },
+            "mma": { "type": "string" },
+            "fitness": { "type": "string" }
+          }
+        }
+      }
+    }
+  },
+  "firestore": {
+    "/settings/global": {
+      "schema": "siteSettings",
+      "description": "Global website settings"
+    }
+  }
+}
