@@ -12,22 +12,22 @@ const Offers = () => {
   const offers = [
     {
       id: 'offer1',
-      title: 'New Member Special',
-      subtitle: 'Get 20% off your first month',
+      title: t('offers.new_member.title'),
+      subtitle: t('offers.new_member.subtitle'),
       imageKey: 'offer1ImageUrl',
       icon: <Zap className="w-6 h-6 text-primary" />
     },
     {
       id: 'offer2',
-      title: 'Annual Membership',
-      subtitle: '2 Months Free with yearly plan',
+      title: t('offers.annual.title'),
+      subtitle: t('offers.annual.subtitle'),
       imageKey: 'offer2ImageUrl',
       icon: <Gift className="w-6 h-6 text-primary" />
     },
     {
       id: 'offer3',
-      title: 'Student Discount',
-      subtitle: 'Special rates for students',
+      title: t('offers.student.title'),
+      subtitle: t('offers.student.subtitle'),
       imageKey: 'offer3ImageUrl',
       icon: <Tag className="w-6 h-6 text-primary" />
     }
@@ -41,51 +41,53 @@ const Offers = () => {
         <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-primary rounded-full blur-[120px]" />
       </div>
 
-      <div className="container mx-auto px-10 relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-          <div className="max-w-2xl">
-            <span className="text-primary font-bold uppercase tracking-[4px] text-xs mb-4 block">Exclusive Deals</span>
-            <h2 className="text-5xl md:text-7xl font-black text-white uppercase leading-[0.9] tracking-tighter">
-              Limited Time <span className="text-primary">Offers</span>
+      <div className="container mx-auto px-6 sm:px-10 relative z-10">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+          <div className="max-w-3xl">
+            <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-4 block text-glow">Exclusive Deals</span>
+            <h2 className="text-4xl sm:text-6xl md:text-7xl font-black text-white uppercase leading-[0.85] tracking-tighter">
+              Limited Time <br className="hidden sm:block" /><span className="text-primary text-glow">Offers</span>
             </h2>
           </div>
-          <p className="text-muted-foreground max-w-xs text-sm italic">
+          <p className="text-white/40 max-w-xs text-xs sm:text-sm italic font-medium">
             Don't miss out on our special promotions. Join the elite team today.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-12 sm:gap-16">
           {offers.map((offer, i) => (
             <motion.div
               key={offer.id}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               className="group"
             >
-              <div className="relative h-[450px] rounded-xl overflow-hidden border border-border bg-card group-hover:border-primary/50 transition-colors">
-                <img 
-                  src={(settings as any)[offer.imageKey] || "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop"} 
-                  alt={offer.title}
-                  className="w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-all duration-700 group-hover:scale-105"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+              <div className="relative flex flex-col h-full bg-secondary/20 border border-white/5 group-hover:border-primary/50 transition-all duration-500 border-gold-glow">
+                <div className="relative h-[300px] sm:h-[400px] overflow-hidden">
+                  <img 
+                    src={(settings as any)[offer.imageKey] || "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop"} 
+                    alt={offer.title}
+                    className="w-full h-full object-cover opacity-100 transition-all duration-1000 group-hover:scale-110"
+                    referrerPolicy="no-referrer"
+                  />
+                  <ImageUploader settingKey={offer.imageKey} label="Edit Deal Image" />
+                </div>
                 
-                <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                  <div className="mb-4 bg-primary/20 w-12 h-12 rounded-lg flex items-center justify-center backdrop-blur-md border border-primary/30">
-                    {offer.icon}
+                <div className="p-8 pb-10 flex flex-col">
+                  <div className="mb-6 bg-primary w-12 h-12 rounded-none flex items-center justify-center bg-gold-glow">
+                    <div className="text-black scale-110">
+                      {offer.icon && React.cloneElement(offer.icon as React.ReactElement, { className: 'w-6 h-6' })}
+                    </div>
                   </div>
-                  <h3 className="text-3xl font-black text-white uppercase tracking-tighter mb-2">
+                  <h3 className="text-2xl sm:text-3xl font-black text-white uppercase tracking-tighter mb-2 leading-tight">
                     {offer.title}
                   </h3>
-                  <p className="text-primary font-bold text-sm uppercase tracking-widest">
+                  <p className="text-primary font-black text-[10px] sm:text-xs uppercase tracking-[0.2em] text-glow mt-2">
                     {offer.subtitle}
                   </p>
                 </div>
-
-                <ImageUploader settingKey={offer.imageKey} label="Upload Offer Image" />
               </div>
             </motion.div>
           ))}

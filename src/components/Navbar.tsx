@@ -43,98 +43,120 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 h-[70px] flex items-center border-b ${
-        scrolled ? 'bg-background/95 backdrop-blur-md border-border' : 'bg-transparent border-transparent'
+      className={`fixed top-0 w-full z-50 transition-all duration-500 h-[70px] sm:h-[90px] flex items-center border-b ${
+        scrolled ? 'bg-background/90 backdrop-blur-xl border-white/10 shadow-2xl' : 'bg-transparent border-transparent'
       }`}
     >
-      <div className="container mx-auto px-10 flex justify-between items-center">
-        <div className="flex items-center gap-4">
-          <div className="w-12 h-12 bg-white/5 border border-border rounded-sm flex items-center justify-center overflow-hidden relative group">
+      <div className="container mx-auto px-6 sm:px-10 flex justify-between items-center h-full">
+        {/* Logo Section */}
+        <div className="flex items-center gap-4 flex-shrink-0">
+          <div className="w-14 h-14 sm:w-16 sm:h-16 bg-white/5 border border-white/10 rounded-none flex items-center justify-center overflow-hidden relative group border-gold-glow">
             {settings.logoUrl && (
-              <img src={settings.logoUrl} alt="Logo" className="w-full h-full object-contain" referrerPolicy="no-referrer" />
+              <img src={settings.logoUrl} alt="Logo" className="w-full h-full object-contain p-1" referrerPolicy="no-referrer" />
             )}
             <ImageUploader settingKey="logoUrl" label="Logo" />
           </div>
-          <span className="text-2xl font-black tracking-tighter text-primary uppercase">
-            FIGHT N' FIT
-          </span>
+          <div className="flex flex-col">
+            <span className="text-white font-black text-xl sm:text-2xl uppercase tracking-tighter leading-none">FIGHT N' FIT</span>
+            <span className="text-primary font-black text-[9px] sm:text-[11px] uppercase tracking-[0.4em] leading-none mt-1.5 text-glow">Sala Al Jadida</span>
+          </div>
         </div>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden lg:flex items-center gap-8">
           {navItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="text-[13px] font-semibold uppercase tracking-widest hover:text-primary transition-colors text-white"
+              className="text-[12px] font-black uppercase tracking-[0.2em] hover:text-primary transition-all text-white/70 hover:text-glow active:scale-95 whitespace-nowrap"
             >
               {item.name}
             </a>
           ))}
           
-          <div className="flex items-center gap-4 border-l border-border pl-6">
+          <div className="flex items-center gap-6 border-l border-white/10 pl-8">
             <DropdownMenu>
-              <DropdownMenuTrigger render={<Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary" />}>
-                <Globe className="w-4 h-4" />
+              <DropdownMenuTrigger render={<Button variant="ghost" size="icon" className="text-white/40 hover:text-primary transition-colors" />}>
+                <Globe className="w-5 h-5" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="bg-card border-border">
-                <DropdownMenuItem onClick={() => changeLanguage('en')} className="cursor-pointer text-xs uppercase font-bold">EN</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => changeLanguage('fr')} className="cursor-pointer text-xs uppercase font-bold">FR</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => changeLanguage('ar')} className="cursor-pointer text-xs uppercase font-bold">AR</DropdownMenuItem>
+              <DropdownMenuContent align="end" className="bg-background/95 backdrop-blur-md border-white/10 min-w-[120px]">
+                <DropdownMenuItem onClick={() => changeLanguage('en')} className="cursor-pointer text-[10px] uppercase font-black tracking-widest p-3 hover:bg-primary hover:text-black">English</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => changeLanguage('fr')} className="cursor-pointer text-[10px] uppercase font-black tracking-widest p-3 hover:bg-primary hover:text-black">Français</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => changeLanguage('ar')} className="cursor-pointer text-[10px] uppercase font-black tracking-widest p-3 hover:bg-primary hover:text-black">العربية</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
             
             <Button 
               nativeButton={false}
               render={<a href={whatsappLink} target="_blank" rel="noopener noreferrer" />}
-              className="bg-primary text-black font-extrabold uppercase tracking-tight hover:bg-primary/90 rounded-[4px] px-6 text-xs h-10"
+              style={{ backgroundColor: '#FFE600', color: '#000000' }}
+              className="font-black uppercase tracking-[0.1em] transition-all px-8 text-[11px] h-11 bg-gold-glow hover:brightness-110"
             >
               {t('nav.join')}
             </Button>
           </div>
         </div>
 
-        {/* Mobile Toggle */}
-        <div className="md:hidden flex items-center gap-4">
+        {/* Mobile Actions */}
+        <div className="lg:hidden flex items-center gap-3">
            <DropdownMenu>
-              <DropdownMenuTrigger render={<Button variant="ghost" size="icon" className="text-white" />}>
+              <DropdownMenuTrigger render={<Button variant="ghost" size="icon" className="text-white hover:text-primary" />}>
                 <Globe className="w-5 h-5" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={() => changeLanguage('en')}>EN</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => changeLanguage('fr')}>FR</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => changeLanguage('ar')}>AR</DropdownMenuItem>
+              <DropdownMenuContent align="end" className="bg-background border-white/10">
+                <DropdownMenuItem onClick={() => changeLanguage('en')} className="font-black text-[10px]">EN</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => changeLanguage('fr')} className="font-black text-[10px]">FR</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => changeLanguage('ar')} className="font-black text-[10px]">AR</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-          <button onClick={() => setIsOpen(!isOpen)} className="text-white">
+          <button 
+            onClick={() => setIsOpen(!isOpen)} 
+            className="text-white p-2 hover:bg-white/5 rounded-none border border-white/10 bg-gold-glow-subtle transition-all active:scale-90"
+            aria-label="Toggle Menu"
+          >
             {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 w-full bg-background border-b border-white/10 md:hidden"
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="fixed inset-0 top-[70px] sm:top-[90px] w-full bg-background/98 backdrop-blur-2xl z-40 lg:hidden flex flex-col"
           >
-            <div className="flex flex-col p-6 gap-4">
-              {navItems.map((item) => (
-                <a
+            <div className="flex flex-col p-10 gap-8 h-full overflow-y-auto">
+              {navItems.map((item, idx) => (
+                <motion.a
                   key={item.name}
                   href={item.href}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: idx * 0.05 }}
                   onClick={() => setIsOpen(false)}
-                  className="text-xl font-bold uppercase tracking-tighter hover:text-primary"
+                  className="text-4xl sm:text-5xl font-black uppercase tracking-tighter hover:text-primary transition-colors border-b border-white/5 pb-4"
                 >
                   {item.name}
-                </a>
+                </motion.a>
               ))}
-              <Button className="bg-primary text-black font-bold uppercase mt-4">
-                {t('nav.join')}
-              </Button>
+              <div className="mt-auto space-y-6 pb-12">
+                <Button 
+                  nativeButton={false}
+                  render={<a href={whatsappLink} target="_blank" rel="noopener noreferrer" />}
+                  style={{ backgroundColor: '#FFE600', color: '#000000' }}
+                  className="font-black uppercase w-full h-16 text-lg tracking-[0.2em] bg-gold-glow flex items-center justify-center rounded-none hover:brightness-110 active:scale-95"
+                >
+                  {t('nav.join')}
+                </Button>
+                <div className="flex justify-center gap-8">
+                  <a href="#" className="text-white/40 hover:text-white transition-colors uppercase font-black text-[10px] tracking-widest">Instagram</a>
+                  <a href="#" className="text-white/40 hover:text-white transition-colors uppercase font-black text-[10px] tracking-widest">Facebook</a>
+                </div>
+              </div>
             </div>
           </motion.div>
         )}

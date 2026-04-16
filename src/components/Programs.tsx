@@ -44,15 +44,17 @@ const Programs = () => {
   return (
     <section id="programs" className="py-24 bg-secondary/30">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-primary font-bold uppercase tracking-[0.3em] text-sm mb-4 block">
-            Train Hard
+        <div className="text-center max-w-3xl mx-auto mb-20 px-6">
+          <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-4 block text-glow">
+            Push Your Limits
           </span>
-          <h2 className="text-5xl md:text-6xl font-black mb-6">{t('programs.title')}</h2>
-          <div className="h-1.5 w-24 bg-primary mx-auto" />
+          <h2 className="text-4xl sm:text-6xl font-black mb-6 tracking-tighter uppercase leading-[0.9]">
+            {t('programs.title')}
+          </h2>
+          <div className="h-1 w-20 bg-primary mx-auto bg-gold-glow" />
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 px-6 sm:px-10">
           {programs.map((program, i) => (
             <motion.div
               key={program.id}
@@ -62,27 +64,27 @@ const Programs = () => {
               transition={{ delay: i * 0.1 }}
               className="group"
             >
-              <Card className="bg-card border border-border rounded-[8px] h-full flex flex-col overflow-hidden relative">
-                <div className="h-48 w-full overflow-hidden relative">
+              <Card className="bg-secondary/40 border-white/5 rounded-none h-full flex flex-col overflow-hidden relative group hover:border-primary/50 transition-colors duration-500 border-gold-glow">
+                <div className="h-56 sm:h-64 w-full overflow-hidden relative">
                   <img 
                     src={(settings as any)[program.imageKey] || "https://images.unsplash.com/photo-1552072092-7f9b8d63efcb?q=80&w=2070&auto=format&fit=crop"} 
                     alt={program.name} 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 opacity-100"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60" />
-                  <ImageUploader settingKey={program.imageKey} label="Change Image" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-secondary/20 via-transparent to-transparent" />
+                  <ImageUploader settingKey={program.imageKey} label="Edit Photo" />
                 </div>
-                <CardContent className="p-6 flex flex-col flex-grow">
-                  <div className="flex justify-between items-start mb-3">
-                    <h3 className="text-primary text-xl font-black uppercase tracking-tighter">
+                <CardContent className="p-8 flex flex-col flex-grow relative z-10">
+                  <div className="flex flex-col gap-2 mb-4">
+                    <span className="text-primary font-black text-[10px] uppercase tracking-widest text-glow">
+                      {program.level}
+                    </span>
+                    <h3 className="text-white text-2xl font-black uppercase tracking-tighter">
                       {program.name}
                     </h3>
-                    <Badge variant="secondary" className="bg-primary/10 text-primary border-none text-[10px] font-bold uppercase">
-                      {program.level}
-                    </Badge>
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-xs text-white/40 leading-relaxed font-medium">
                     {program.desc}
                   </p>
                 </CardContent>

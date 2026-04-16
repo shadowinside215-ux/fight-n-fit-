@@ -10,62 +10,56 @@ const Contact = () => {
   return (
     <section id="contact" className="py-24 bg-background">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-16 px-6 sm:px-0">
           <div>
-            <span className="text-primary font-bold uppercase tracking-[0.3em] text-sm mb-4 block">
+            <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-4 block text-glow">
               Contact
             </span>
-            <h2 className="text-5xl md:text-6xl font-black mb-8 leading-tight">
+            <h2 className="text-4xl sm:text-6xl font-black mb-10 tracking-tighter uppercase leading-[0.9]">
               {t('contact.title')}
             </h2>
             
-            <div className="space-y-8 mb-12">
-              <div className="info-item">
-                <label className="block text-[10px] text-muted-foreground uppercase mb-1 font-bold tracking-wider">Location</label>
-                <p className="text-[14px] text-white">{t('contact.address')}</p>
+            <div className="grid sm:grid-cols-2 gap-8 mb-12">
+              <div className="info-item border-l-2 border-primary/20 pl-6 border-gold-glow py-2">
+                <label className="block text-[9px] text-white/30 uppercase mb-2 font-black tracking-[0.2em]">Location</label>
+                <p className="text-[13px] text-white font-black uppercase tracking-tight leading-snug">{t('contact.address')}</p>
               </div>
 
-              <div className="info-item">
-                <label className="block text-[10px] text-muted-foreground uppercase mb-1 font-bold tracking-wider">Phone</label>
-                <p className="text-[14px] text-white">{t('contact.phone')}</p>
+              <div className="info-item border-l-2 border-primary/20 pl-6 border-gold-glow py-2">
+                <label className="block text-[9px] text-white/30 uppercase mb-2 font-black tracking-[0.2em]">Phone</label>
+                <p className="text-[13px] text-primary font-black uppercase tracking-tight text-glow">{t('contact.phone')}</p>
               </div>
 
-              <div className="info-item">
-                <label className="block text-[10px] text-muted-foreground uppercase mb-1 font-bold tracking-wider">Email</label>
-                <p className="text-[14px] text-white">info@fightnfit.ma</p>
+              <div className="info-item border-l-2 border-primary/20 pl-6 border-gold-glow py-2">
+                <label className="block text-[9px] text-white/30 uppercase mb-2 font-black tracking-[0.2em]">Email</label>
+                <p className="text-[13px] text-white font-black uppercase tracking-tight">info@fightnfit.ma</p>
               </div>
 
-              <a href="https://wa.me/212661530857" className="flex items-center gap-2 text-[#25D366] font-bold text-[14px] hover:underline">
-                Chat on WhatsApp →
-              </a>
+              <div className="info-item border-l-2 border-primary/20 pl-6 border-gold-glow py-2">
+                <label className="block text-[9px] text-white/30 uppercase mb-2 font-black tracking-[0.2em]">Socials</label>
+                <div className="flex gap-4">
+                  <a href="https://www.instagram.com/fight.nfit" target="_blank" className="text-white hover:text-primary transition-colors"><Instagram className="w-5 h-5" /></a>
+                  <a href="https://www.facebook.com/mahajalarouss" target="_blank" className="text-white hover:text-primary transition-colors"><Facebook className="w-5 h-5" /></a>
+                </div>
+              </div>
             </div>
 
-            <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="bg-primary text-black font-extrabold uppercase tracking-tight h-14 px-8 rounded-[4px] text-sm">
+            <div className="flex flex-col sm:flex-row gap-4 mb-10">
+              <Button 
+                size="lg" 
+                style={{ backgroundColor: '#FFE600', color: '#000000' }}
+                className="font-black uppercase tracking-widest h-14 px-10 rounded-none text-xs bg-gold-glow w-full sm:w-auto border-none hover:brightness-110"
+              >
                 {t('contact.call')}
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white font-extrabold uppercase tracking-tight h-14 px-8 rounded-[4px] text-sm hover:bg-white/5">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                style={{ borderColor: '#FFE600', color: '#FFFFFF' }}
+                className="border-2 font-black uppercase tracking-widest h-14 px-10 rounded-none text-xs w-full sm:w-auto hover:bg-[#FFE600]/10"
+              >
                 {t('contact.directions')}
               </Button>
-            </div>
-
-            <div className="flex gap-4 mt-10">
-              <a 
-                href="https://www.instagram.com/fight.nfit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-8 h-8 border border-border flex items-center justify-center rounded-full text-muted-foreground hover:text-primary hover:border-primary transition-colors cursor-pointer"
-              >
-                <Instagram className="w-4 h-4" />
-              </a>
-              <a 
-                href="https://www.facebook.com/mahajalarouss/?locale=ar_AR" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-8 h-8 border border-border flex items-center justify-center rounded-full text-muted-foreground hover:text-primary hover:border-primary transition-colors cursor-pointer"
-              >
-                <Facebook className="w-4 h-4" />
-              </a>
             </div>
           </div>
 
@@ -73,7 +67,7 @@ const Contact = () => {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="h-[500px] lg:h-auto rounded-[12px] overflow-hidden border border-border relative group"
+            className="h-[400px] lg:h-auto rounded-none overflow-hidden border border-white/5 relative group border-gold-glow"
           >
             {/* Google Maps Embed Placeholder */}
             <iframe

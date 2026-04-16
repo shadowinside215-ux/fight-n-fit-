@@ -4,6 +4,11 @@ import { initReactI18next } from 'react-i18next';
 const resources = {
   en: {
     translation: {
+      offers: {
+        new_member: { title: "Special Offer's", subtitle: 'Join the elite' },
+        annual: { title: 'Special Offer', subtitle: 'Musculation + Discipline of Choice' },
+        student: { title: 'Box Ladies', subtitle: 'Women only' }
+      },
       nav: {
         home: 'Home',
         about: 'About',
@@ -84,6 +89,11 @@ const resources = {
   },
   fr: {
     translation: {
+      offers: {
+        new_member: { title: "Offres Spéciales", subtitle: 'Rejoignez-nous' },
+        annual: { title: 'Offre Spéciale', subtitle: 'Musculation + Discipline au Choix' },
+        student: { title: 'Box Ladies', subtitle: 'Exclusivement femmes' }
+      },
       nav: {
         home: 'Accueil',
         about: 'À Propos',
@@ -164,6 +174,11 @@ const resources = {
   },
   ar: {
     translation: {
+      offers: {
+        new_member: { title: "عروض خاصة", subtitle: 'انضم إلينا' },
+        annual: { title: 'عرض خاص', subtitle: 'كمال الأجسام + تخصص من اختيارك' },
+        student: { title: 'Box Ladies', subtitle: 'للسيدات فقط' }
+      },
       nav: {
         home: 'الرئيسية',
         about: 'من نحن',

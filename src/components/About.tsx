@@ -32,56 +32,56 @@ const About = () => {
   return (
     <section id="about" className="py-24 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 sm:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative"
+            className="relative px-6 sm:px-0"
           >
-            <div className="aspect-square rounded-2xl overflow-hidden border-2 border-primary/20 relative group">
+            <div className="aspect-square rounded-none overflow-hidden border border-white/10 relative group border-gold-glow">
               <img
                 src={aboutImage}
                 alt="Gym Interior"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover opacity-100 transition-all duration-700"
                 referrerPolicy="no-referrer"
               />
-              <ImageUploader settingKey="aboutImageUrl" label="Change About Image" />
+              <ImageUploader settingKey="aboutImageUrl" label="Edit Photo" />
             </div>
-            <div className="absolute -bottom-6 -right-6 bg-primary p-8 rounded-xl hidden md:block">
-              <span className="text-black font-black text-5xl block leading-none">10+</span>
-              <span className="text-black font-bold uppercase text-sm tracking-widest">Expert Coaches</span>
+            <div className="absolute -bottom-6 -right-6 bg-primary p-6 sm:p-8 rounded-none hidden md:block bg-gold-glow">
+              <span className="text-black font-black text-4xl sm:text-5xl block leading-none">10+</span>
+              <span className="text-black font-black uppercase text-[10px] tracking-widest">Expert Coaches</span>
             </div>
           </motion.div>
 
-          <div>
-            <span className="text-primary font-bold uppercase tracking-[0.3em] text-sm mb-4 block">
+          <div className="px-6 sm:px-0">
+            <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] sm:text-xs mb-4 block text-glow">
               The Dojo
             </span>
-            <h2 className="text-5xl md:text-6xl font-black mb-8 leading-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-8 leading-[0.9] tracking-tighter uppercase">
               {t('about.title')}
             </h2>
-            <p className="text-xl text-white/60 mb-12 leading-relaxed">
+            <p className="text-base sm:text-lg text-white/50 mb-12 leading-relaxed font-medium">
               {t('about.description')}
             </p>
 
-            <div className="grid gap-8">
+            <div className="grid gap-6">
               {features.map((feature, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="flex gap-6 items-start"
+                  className="flex gap-5 items-start"
                 >
-                  <div className="mt-1 p-3 bg-white/5 rounded-lg border border-white/10">
+                  <div className="mt-1 p-3 bg-secondary border border-white/5 rounded-none border-gold-glow">
                     {feature.icon}
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2 uppercase tracking-tight">{feature.title}</h3>
-                    <p className="text-white/50">{feature.desc}</p>
+                    <h3 className="text-lg sm:text-xl font-black mb-1 uppercase tracking-tighter">{feature.title}</h3>
+                    <p className="text-xs sm:text-sm text-white/30 font-medium">{feature.desc}</p>
                   </div>
                 </motion.div>
               ))}

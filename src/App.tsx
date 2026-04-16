@@ -12,30 +12,35 @@ import CTASection from './components/CTASection';
 import Footer from './components/Footer';
 import { AppProvider } from './AppContext';
 import { AdminLogin } from './components/AdminTools';
+import { HelmetProvider } from 'react-helmet-async';
+import BrandingMeta from './components/BrandingMeta';
 
 function App() {
   const { i18n } = useTranslation();
   
   return (
-    <AppProvider>
-      <div className={`min-h-screen bg-background text-foreground selection:bg-primary selection:text-black overflow-x-hidden ${i18n.language === 'ar' ? 'rtl' : ''}`}>
-        <Suspense fallback={<div className="h-screen w-full flex items-center justify-center bg-background text-primary font-black text-4xl animate-pulse">FIGHT N' FIT</div>}>
-          <Navbar />
-          <main>
-            <Hero />
-            <About />
-            <Programs />
-            <Offers />
-            <Schedule />
-            <Testimonials />
-            <Contact />
-            <CTASection />
-          </main>
-          <Footer />
-          <AdminLogin />
-        </Suspense>
-      </div>
-    </AppProvider>
+    <HelmetProvider>
+      <AppProvider>
+        <div className={`min-h-screen bg-background text-foreground selection:bg-primary selection:text-black overflow-x-hidden ${i18n.language === 'ar' ? 'rtl' : ''}`}>
+          <BrandingMeta />
+          <Suspense fallback={<div className="h-screen w-full flex items-center justify-center bg-background text-primary font-black text-4xl animate-pulse">FIGHT N' FIT</div>}>
+            <Navbar />
+            <main>
+              <Hero />
+              <About />
+              <Programs />
+              <Offers />
+              <Schedule />
+              <Testimonials />
+              <Contact />
+              <CTASection />
+            </main>
+            <Footer />
+            <AdminLogin />
+          </Suspense>
+        </div>
+      </AppProvider>
+    </HelmetProvider>
   );
 }
 
