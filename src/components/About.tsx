@@ -40,7 +40,7 @@ const About = () => {
             transition={{ duration: 0.8 }}
             className="relative px-6 sm:px-0"
           >
-            <div className="aspect-square rounded-none overflow-hidden border border-white/10 relative group border-gold-glow">
+            <div className="aspect-[4/3] sm:aspect-square rounded-none overflow-hidden border border-white/10 relative group border-gold-glow">
               <img
                 src={aboutImage}
                 alt="Gym Interior"
@@ -49,9 +49,9 @@ const About = () => {
               />
               <ImageUploader settingKey="aboutImageUrl" label="Edit Photo" />
             </div>
-            <div className="absolute -bottom-6 -right-6 bg-primary p-6 sm:p-8 rounded-none hidden md:block bg-gold-glow">
-              <span className="text-black font-black text-4xl sm:text-5xl block leading-none">10+</span>
-              <span className="text-black font-black uppercase text-[10px] tracking-widest">Expert Coaches</span>
+            <div className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 bg-primary p-4 sm:p-8 rounded-none bg-gold-glow z-10">
+              <span className="text-black font-black text-2xl sm:text-5xl block leading-none">10+</span>
+              <span className="text-black font-black uppercase text-[8px] sm:text-[10px] tracking-widest">Expert Coaches</span>
             </div>
           </motion.div>
 

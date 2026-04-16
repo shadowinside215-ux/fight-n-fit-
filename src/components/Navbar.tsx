@@ -121,38 +121,35 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 top-[70px] sm:top-[90px] w-full bg-background/98 backdrop-blur-2xl z-40 lg:hidden flex flex-col"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-0 w-full h-full bg-black z-[100] lg:hidden flex flex-col pt-20"
           >
-            <div className="flex flex-col p-10 gap-8 h-full overflow-y-auto">
+            <button 
+              onClick={() => setIsOpen(false)}
+              className="absolute top-6 right-6 text-white p-2"
+            >
+              <X className="w-10 h-10" />
+            </button>
+            <div className="flex flex-col items-center justify-center p-10 gap-4 h-full">
               {navItems.map((item, idx) => (
                 <motion.a
                   key={item.name}
                   href={item.href}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.05 }}
                   onClick={() => setIsOpen(false)}
-                  className="text-4xl sm:text-5xl font-black uppercase tracking-tighter hover:text-primary transition-colors border-b border-white/5 pb-4"
+                  className="text-4xl sm:text-6xl font-black uppercase tracking-tighter hover:text-primary transition-colors py-3 text-center w-full"
                 >
                   {item.name}
                 </motion.a>
               ))}
-              <div className="mt-auto space-y-6 pb-12">
-                <Button 
-                  nativeButton={false}
-                  render={<a href={whatsappLink} target="_blank" rel="noopener noreferrer" />}
-                  style={{ backgroundColor: '#FFE600', color: '#000000' }}
-                  className="font-black uppercase w-full h-16 text-lg tracking-[0.2em] bg-gold-glow flex items-center justify-center rounded-none hover:brightness-110 active:scale-95"
-                >
-                  {t('nav.join')}
-                </Button>
-                <div className="flex justify-center gap-8">
-                  <a href="#" className="text-white/40 hover:text-white transition-colors uppercase font-black text-[10px] tracking-widest">Instagram</a>
-                  <a href="#" className="text-white/40 hover:text-white transition-colors uppercase font-black text-[10px] tracking-widest">Facebook</a>
+              <div className="mt-12 flex flex-col items-center gap-6">
+                <div className="flex gap-10">
+                  <a href="#" className="text-white/60 hover:text-white transition-colors uppercase font-black text-[12px] tracking-widest hover:text-glow">Instagram</a>
+                  <a href="#" className="text-white/60 hover:text-white transition-colors uppercase font-black text-[12px] tracking-widest hover:text-glow">Facebook</a>
                 </div>
               </div>
             </div>
