@@ -46,9 +46,11 @@ const Contact = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
               <Button 
+                nativeButton={false}
+                render={<a href="tel:+212661530857" />}
                 size="lg" 
                 style={{ backgroundColor: '#FFE600', color: '#000000' }}
-                className="font-black uppercase tracking-widest h-14 px-10 rounded-none text-xs bg-gold-glow w-full sm:w-auto border-none hover:brightness-110"
+                className="font-black uppercase tracking-widest h-14 px-10 rounded-none text-xs bg-gold-glow w-full sm:w-auto border-none hover:brightness-110 flex items-center justify-center"
               >
                 {t('contact.call')}
               </Button>

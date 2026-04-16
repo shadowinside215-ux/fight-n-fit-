@@ -5,7 +5,7 @@ const resources = {
   en: {
     translation: {
       offers: {
-        new_member: { title: "Special Offer's", subtitle: 'Join the elite' },
+        new_member: { title: "Special Offer's", subtitle: "One time offer's" },
         annual: { title: 'Special Offer', subtitle: 'Musculation + Discipline of Choice' },
         student: { title: 'Box Ladies', subtitle: 'Women only' }
       },
@@ -90,7 +90,7 @@ const resources = {
   fr: {
     translation: {
       offers: {
-        new_member: { title: "Offres Spéciales", subtitle: 'Rejoignez-nous' },
+        new_member: { title: "Offres Spéciales", subtitle: "Offres à durée limitée" },
         annual: { title: 'Offre Spéciale', subtitle: 'Musculation + Discipline au Choix' },
         student: { title: 'Box Ladies', subtitle: 'Exclusivement femmes' }
       },
@@ -175,7 +175,7 @@ const resources = {
   ar: {
     translation: {
       offers: {
-        new_member: { title: "عروض خاصة", subtitle: 'انضم إلينا' },
+        new_member: { title: "عروض خاصة", subtitle: "عروض لمرة واحدة" },
         annual: { title: 'عرض خاص', subtitle: 'كمال الأجسام + تخصص من اختيارك' },
         student: { title: 'Box Ladies', subtitle: 'للسيدات فقط' }
       },
