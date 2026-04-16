@@ -43,22 +43,20 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-500 h-[70px] sm:h-[90px] flex items-center border-b ${
-        scrolled ? 'bg-background/90 backdrop-blur-xl border-white/10 shadow-2xl' : 'bg-transparent border-transparent'
-      }`}
+      className="fixed top-0 w-full z-50 transition-all duration-500 h-[70px] sm:h-[90px] flex items-center border-b bg-black/95 backdrop-blur-md border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
     >
       <div className="container mx-auto px-6 sm:px-10 flex justify-between items-center h-full">
         {/* Logo Section */}
-        <div className="flex items-center gap-4 flex-shrink-0">
-          <div className="w-14 h-14 sm:w-16 sm:h-16 bg-white/5 border border-white/10 rounded-none flex items-center justify-center overflow-hidden relative group border-gold-glow">
+        <div className="flex items-center gap-3 sm:gap-4 flex-shrink-0">
+          <div className="w-10 h-10 xs:w-12 xs:h-12 sm:w-16 sm:h-16 bg-white/5 border border-white/10 rounded-none flex items-center justify-center overflow-hidden relative group border-gold-glow">
             {settings.logoUrl && (
               <img src={settings.logoUrl} alt="Logo" className="w-full h-full object-contain p-1" referrerPolicy="no-referrer" />
             )}
             <ImageUploader settingKey="logoUrl" label="Logo" />
           </div>
           <div className="flex flex-col">
-            <span className="text-white font-black text-xl sm:text-2xl uppercase tracking-tighter leading-none">FIGHT N' FIT</span>
-            <span className="text-primary font-black text-[9px] sm:text-[11px] uppercase tracking-[0.4em] leading-none mt-1.5 text-glow">Sala Al Jadida</span>
+            <span className="text-white font-black text-lg sm:text-2xl uppercase tracking-tighter leading-none">FIGHT N' FIT</span>
+            <span className="text-primary font-black text-[7px] xs:text-[9px] sm:text-[11px] uppercase tracking-[0.4em] leading-none mt-1 sm:mt-1.5 text-glow">Sala Al Jadida</span>
           </div>
         </div>
 

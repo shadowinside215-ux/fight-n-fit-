@@ -36,10 +36,7 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <span className="text-primary font-bold uppercase tracking-[4px] text-[10px] sm:text-xs mb-4 block text-glow drop-shadow-lg">
-              Premium Martial Arts in Sala Al Jadida
-            </span>
-            <h1 className="text-3xl sm:text-6xl lg:text-7xl font-black leading-[0.85] mb-6 text-white uppercase tracking-tighter drop-shadow-2xl">
+            <h1 className="text-xl sm:text-6xl lg:text-7xl font-black leading-[0.85] mb-6 text-white uppercase tracking-tighter drop-shadow-2xl">
               {t('hero.title').split('.').filter(Boolean).map((part, i) => (
                 <span key={i} className="block last:text-primary last:text-glow">
                   {part}.

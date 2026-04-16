@@ -70,12 +70,6 @@ const Footer = () => {
           <div className="flex items-center gap-10">
             <a href="#" className="text-white/20 text-[10px] uppercase font-black hover:text-white transition-colors tracking-widest">Privacy</a>
             <a href="#" className="text-white/20 text-[10px] uppercase font-black hover:text-white transition-colors tracking-widest">Terms</a>
-            <button 
-              onClick={() => window.dispatchEvent(new CustomEvent('open-admin-login'))}
-              className="text-primary/20 text-[10px] uppercase font-black hover:text-primary transition-colors tracking-widest"
-            >
-              System
-            </button>
           </div>
         </div>
       </div>
